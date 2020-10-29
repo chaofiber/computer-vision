@@ -1,0 +1,16 @@
+% Compute the distance for pairs of points and lines
+% Input
+%   points    Homogeneous 2D points 3xN
+%   lines     2D homogeneous line equation 3xN
+% 
+% Output
+%   d         Distances from each point to the corresponding line N
+function d = distPointsLines(points, lines)
+% distance from a point (x,y,1) to a line (ax+by+c=0) is
+% distance = abs(ax+by+c)/sqrt(a^2+b^2)
+n = size(points,2);
+d = zeros(n,1);
+for ii = 1:n
+    d(ii) = abs(points(:,i)'*lines(:,i))/ (lines
+end
+
