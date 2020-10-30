@@ -9,10 +9,10 @@ addpath helpers
 %Load images
 % imgName1 = ''; % Try with some different pairs
 % imgName2 = '';
-imgName1 = 'images/rect1.jpg';
-imgName2 = 'images/rect2.jpg';
-% imgName1 = 'images/pumpkin1.jpg';
-% imgName2 = 'images/pumpkin2.jpg';
+% imgName1 = 'images/rect1.jpg';
+% imgName2 = 'images/rect2.jpg';
+imgName1 = 'images/pumpkin1.jpg';
+imgName2 = 'images/pumpkin2.jpg';
 % imgName1 = 'images/ladybug_Rectified_0768x1024_00000064_Cam0.png';
 % imgName2 = 'images/ladybug_Rectified_0768x1024_00000080_Cam0.png';
 
@@ -24,14 +24,14 @@ img2 = single(rgb2gray(imread(imgName2)));
 [fb, db] = vl_sift(img2);
 [matches, scores] = vl_ubcmatch(da, db);
 
-% x1s = [fa(1:2, matches(1,:)); ones(1,size(matches,2))];
-% x2s = [fb(1:2, matches(2,:)); ones(1,size(matches,2))];
+x1s = [fa(1:2, matches(1,:)); ones(1,size(matches,2))];
+x2s = [fb(1:2, matches(2,:)); ones(1,size(matches,2))];
 % load('x1s_ladybug.mat','x1s');
 % load('x2s_ladybug.mat','x2s');
 % load('x1s_pumpkin.mat','x1s');
 % load('x2s_pumpkin.mat','x2s');
-load('x1s_rect.mat','x1s');
-load('x2s_rect.mat','x2s');
+% load('x1s_rect.mat','x1s');
+% load('x2s_rect.mat','x2s');
 
 % to save file and compare different threshold
 % save('x1s_rect.mat','x1s');
