@@ -8,8 +8,8 @@ addpath helpers
 clickPoints = false;
 %dataset = 0;   % Your pictures
 % dataset = 1; % ladybug
-dataset = 2; % rect
-% dataset = 3; % pumpkin
+% dataset = 2; % rect
+dataset = 3; % pumpkin
 
 
 % image names
@@ -48,25 +48,29 @@ end
 %% estimate fundamental matrix
 
 [Fh, F] = fundamentalMatrix(x1s, x2s); % TODO: implement this function
+Fh
+F
 
 
 %% Draw epipolar lines
 
 % FF is the fundamental matrix we wish to draw epipolar lines for
-% FF = Fh
-FF = F
+% FF = Fh; name = 'singular';
+FF = F; name = 'non_singular';
 
 % show clicked points
-figure(1),clf, imshow(img1, []); hold on, plot(x1s(1,:), x1s(2,:), '*r');
-figure(2),clf, imshow(img2, []); hold on, plot(x2s(1,:), x2s(2,:), '*r');
+figure(1),clf, imshow(img1, []); hold on; plot(x1s(1,:), x1s(2,:), '*r');saveas(gcf,strcat(name1,'_points.png'));
+figure(2),clf, imshow(img2, []); hold on; plot(x2s(1,:), x2s(2,:), '*r');saveas(gcf,strcat(name2,'_points.png'));
 
 % draw epipolar lines in img 1
 figure(1)
 for k = 1:size(x1s,2)
     drawEpipolarLines(FF'*x2s(:,k), img1);
 end
+saveas(gcf,strcat(name,strcat(name1,'_epipolar.png')));
 % draw epipolar lines in img 2
 figure(2)
 for k = 1:size(x2s,2)
     drawEpipolarLines(FF*x1s(:,k), img2);
 end
+saveas(gcf,strcat(name, strcat(name2,'_epipolar.png')));
