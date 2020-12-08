@@ -1,0 +1,11 @@
+function [outputArg1,outputArg2] = propagate(particles,sizeFram,params)
+%PROPAGATE the particles given the system prediction model (matrix A) and
+%the system model noise represented by params
+% Input: 
+%        particles   :   (state_dim(2 or 4), n_particles)
+%        frame       :   image used for computing
+%        hist_bin    :   number of bins used
+% Output: 
+%        hist        :   histogram of the color: (hist_bin,3)
+end
+
