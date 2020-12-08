@@ -30,10 +30,12 @@ for ii = 1:n
     theta_list = theta_list + 2*pi*(theta_list<0);
     % compute the index among the K bins: a unique indexing method: set the
     % index of the related bin as:  (n_theta-1)*nbBins_r + n_r
+    % todo: need to recompute the n_theta, as sometimes it is below zero
+    % while the idx is above zero. However, such cases should be
+    % eliminated.
     n_theta = ceil(theta_list / dtheta);
     n_r = ceil((log(r_list/norm) - r_min) / dr);
     idx = (n_theta - 1).* nbBins_r + n_r;
-    disp("idx");disp(idx);
     if (size(idx,1))>0
         for jj = 1:size(idx,1)
             if idx(jj) > 0
