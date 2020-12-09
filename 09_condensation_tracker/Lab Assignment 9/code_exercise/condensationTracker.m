@@ -47,6 +47,9 @@ switch videoName
         stepFrame = 1;
   case 'myOwnVideo'
     %implement here
+    firstFrame = 12;
+    lastFrame = 45;
+    stepFrame = 1;
 end
 
 % get the video

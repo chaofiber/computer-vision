@@ -9,7 +9,7 @@ function [meanState] = estimate(particles,particles_w)
 % 
 %        Author  :   Chao Ni, chaoni@ethz.ch
 %        Date    :   08.12.2020
-
-meanState = particles_w
+disp(size(particles
+meanState = particles_w' * particles;
 end
 
