@@ -10,6 +10,7 @@ function [meanState] = estimate(particles,particles_w)
 %        Author  :   Chao Ni, chaoni@ethz.ch
 %        Date    :   08.12.2020
 
-meanState = particles_w' * particles;
+% meanState = sum(particles.*particles_w,1);
+meanState = particles_w'*particles;
 end
 

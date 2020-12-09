@@ -15,22 +15,24 @@ function [particles] = propagate(particles,sizeFrame,params)
 %  no motion at all
 if params.model == 0
     A = eye(2);
-    W = [params.sigma_position ; params.sigma_position];
+    W = normrnd(0,params.sigma_position,params.num_particles,2);
 else
 % assume time step as 1
     A = [1 0 1 0;
          0 1 0 1;
          0 0 1 0;
          0 0 0 1];
-    W = [params.sigma_position; params.sigma_position; params.sigma_velocity;params.sigma_velocity];
+    W_pos = normrnd(0,params.sigma_position,params.num_particles,2);
+    W_vel = normrnd(0,params.sigma_velocity,params.num_particles,2);
+    W = [W_pos,W_vel];
 end
 
-W = repmat(W',params.num_particles,1); % n*4
+% W = repmat(W',params.num_particles,1); % n*4
 particles = particles * A' + W;
 
-particles(:,1) = min(particles(:,1),sizeFrame(1));
+particles(:,1) = min(particles(:,1),sizeFrame(2));
 particles(:,1) = max(particles(:,1),1);
-particles(:,2) = min(particles(:,2),sizeFrame(2));
+particles(:,2) = min(particles(:,2),sizeFrame(1));
 particles(:,2) = max(particles(:,2),1);
 end
 

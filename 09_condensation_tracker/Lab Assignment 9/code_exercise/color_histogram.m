@@ -17,16 +17,16 @@ function [hist] = color_histogram(xMin,yMin,xMax,yMax,frame,hist_bin)
 
 xMin = round(max(1,xMin));
 yMin = round(max(1,yMin));
-xMax = round(min(xMax, size(frame,1)));
-yMax = round(min(yMax, size(frame,2)));
+xMax = round(min(xMax, size(frame,2)));
+yMax = round(min(yMax, size(frame,1)));
 
 % R,G,B are hist_bin*1 arraies containing number of counts, ~ are the
 % related bin distribution
-[R, ~] = imhist(frame(xMin:xMax,yMin:yMax,1),hist_bin);
-[G, ~] = imhist(frame(xMin:xMax,yMin:yMax,2),hist_bin);
-[B, ~] = imhist(frame(xMin:xMax,yMin:yMax,3),hist_bin);
+[R, ~] = imhist(frame(yMin:yMax,xMin:xMax,1),hist_bin);
+[G, ~] = imhist(frame(yMin:yMax,xMin:xMax,2),hist_bin);
+[B, ~] = imhist(frame(yMin:yMax,xMin:xMax,3),hist_bin);
 
-hist = [R,G,B];
+hist = [R;G;B];
 % normalize hist: 
 % todo: how to normalize, color channer wise?
 hist = hist ./ sum(hist, 'all');

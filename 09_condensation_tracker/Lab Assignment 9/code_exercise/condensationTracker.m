@@ -109,6 +109,7 @@ end
 % INITIALIZE PARTICLES
 particles = repmat(meanStateAPriori(1,:), params.num_particles, 1);
 particles_w = repmat(1/params.num_particles, params.num_particles, 1);
+disp("start......");
 
 for i = 1:length(frameValues)
     t = frameValues(i);
