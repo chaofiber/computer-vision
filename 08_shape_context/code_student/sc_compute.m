@@ -27,18 +27,15 @@ d = zeros(n, nbBins_r*nbBins_theta);
 for ii = 1:n
     X_rel = setdiff(X,X(ii,:),'rows') - X(ii,:);
     [theta_list, r_list] = cart2pol(X_rel(:,1), X_rel(:,2));
-    theta_list = theta_list + 2*pi*(theta_list<0);
+    theta_list = theta_list + 2*pi*(theta_list<=0);
     % compute the index among the K bins: a unique indexing method: set the
     % index of the related bin as:  (n_theta-1)*nbBins_r + n_r
     n_theta = ceil(theta_list / dtheta);
     n_r = ceil((log(r_list/norm) - r_min) / dr);
-    idx = (n_theta - 1).* nbBins_r + n_r;
-    disp("idx");disp(idx);
-    if (size(idx,1))>0
-        for jj = 1:size(idx,1)
-            if idx(jj) > 0
-                d(ii,idx(jj)) = d(ii,idx(jj)) + 1;
-            end
+    for jj = 1:size(n_r,1)
+        if (n_r(jj) >= 1 && n_r(jj) <= nbBins_r)
+            idx = (n_theta(jj) - 1).* nbBins_r + n_r(jj);
+            d(ii,idx) = d(ii,idx) + 1;
         end
     end
 end

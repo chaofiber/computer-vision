@@ -15,7 +15,7 @@ nbBins_theta = 12;
 nbBins_r = 5;
 smallest_r = 1/8;%length of the smallest radius (assuming normalized distances)
 biggest_r = 3;%length of the biggest radius (assuming normalized distances)
-maxIterations = 10;
+maxIterations = 6;
 
 
 if display_flag
