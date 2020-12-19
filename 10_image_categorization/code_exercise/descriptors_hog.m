@@ -1,6 +1,7 @@
 function [descriptors,patches] = descriptors_hog(img,vPoints,cellWidth,cellHeight)
 % For each grid point (feature), generate a descriptor known as histogram
-% of oriented gradients (HOG) descriptor.
+% of oriented gradients (HOG) descriptor. And concate them as a feature for
+% the image
 %
 % Input:
 %      img         :  image  (n,m);
@@ -45,12 +46,12 @@ function [descriptors,patches] = descriptors_hog(img,vPoints,cellWidth,cellHeigh
         hist = zeros(nCellsH*nCellsW,nBins);
         for j = 1:nCellsH
             for k = 1:nCellsW
-                cell = Gdir(floor(vPoints(i,1)-w*nCellsW/2):floor(vPoints(i,1)-w*nCellsW/2)+cellWidth-1,...
-                            floor(vPoints(i,2)-h*nCellsH/2):floor(vPoints(i,2)-h*nCellsH/2)+cellHeight-1);
+                cell = Gdir(floor(vPoints(i,1)-w*nCellsW/2)+(k-1)*w:floor(vPoints(i,1)-w*nCellsW/2)+k*w-1,...
+                            floor(vPoints(i,2)-h*nCellsH/2)+(j-1)*h:floor(vPoints(i,2)-h*nCellsH/2)+j*h-1);
                 hist((j-1)*nCellsW+k,:) = histcounts(cell,nBins);
             end
         end
-        descriptors(i,:) = reshape(hist',[1,nCellsW*nCellsH*nBins]);
+        descriptors(i,:) = reshape(hist',[],1);
     end % for all local feature points
     
 end

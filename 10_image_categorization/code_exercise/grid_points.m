@@ -22,8 +22,8 @@ vPoints = zeros(nPointsX*nPointsY,2);
 x_coord = linspace(border+1,size(img,1)-border,nPointsX);
 y_coord = linspace(border+1,size(img,2)-border,nPointsY);
 for i = 1:nPointsX
-    vPoints((i-1)*nPointsY:i*nPointsY,1) = x_coord(i);
-    vPoints((i-1)*nPointsY:i*nPointsY,2) = y_coord;
+    vPoints((i-1)*nPointsY+1:i*nPointsY,1) = x_coord(i);
+    vPoints((i-1)*nPointsY+1:i*nPointsY,2) = y_coord;
 end
 
 end

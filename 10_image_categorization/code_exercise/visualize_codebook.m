@@ -31,7 +31,7 @@ function vCenters = visualize_codebook(vCenters,vFeatures,vPatches,cellWidth,cel
     
   [sortedScores,scoreOrder] = sort(scores,'descend');
   clusterPatches=clusterPatches(:,:,:,scoreOrder);
-  
+  figure(1);
   montage(clusterPatches, 'DisplayRange', []);
     
 end
