@@ -5,7 +5,7 @@ function vBoW = create_bow_histograms(nameDir, vCenters)
   %   vBoW     : #image x N (200). matrix containing the resulting BoW
   %              activation histogram for each image
   
-  vImgNames = dir(fullfile(nameDir,'*.png'));
+  vImgNames = dir(fullfile(nameDir,'*.png')); % change to jpg in my data
   nImgs = length(vImgNames);  
   vBoW  = [];
   

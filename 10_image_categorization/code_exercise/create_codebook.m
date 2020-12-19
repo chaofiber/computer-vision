@@ -7,7 +7,7 @@ function vCenters = create_codebook(nameDirPos,nameDirNeg,k)
 % Output:
 %     vCenters: center of all high-dimensional features, size (k,
 %     P=128),128 is the feature length for each image
-  vImgNames = dir(fullfile(nameDirPos,'*.png'));
+  vImgNames = dir(fullfile(nameDirPos,'*.png')); % change to jpg for my own data
   vImgNames = [vImgNames; dir(fullfile(nameDirNeg,'*.png'))];
   
   nImgs = length(vImgNames);
