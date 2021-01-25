@@ -1,5 +1,5 @@
 function [C] = chi2_cost(s1,s2)
-%CHI2_COST compute a cost matrix between trwo sets of shape context
+%CHI2_COST compute a cost matrix between two sets of shape context
 %output:
 %     - C: the cost matrix for matching two sets of shape context
 %     descriptors s1 and s2: (N * M)
