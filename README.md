@@ -72,6 +72,7 @@ In this lab we wrap all concepts learned before and implement the structure from
 
 ## 8. Shape Context
 In this lab we implemented a shape context descriptor as a feature, and use the Hungarian algorithm to minimize the correspondence cost matrix between two sets of descriptors.
+
 <img src = "08_shape_context/code_student/images/watch04.png" class="center" width="400">
 
 - Shape context descriptor: for each point, we define a log-polar coordinate system with this point as origin, and then count number of points inside each bin. Therefore we can have a distribution of points relative to each points.
