@@ -82,7 +82,7 @@ In this lab we implemented a shape context descriptor as a feature, and use the 
 ## 9. Condensation Tracker
 In this lab we implement a Condensation tracker, which is a recursive Bayesian filter.
 
-<img src = "09_condensation_tracker/Lab Assignment 9/code_exercise/images/02videonum300.png" class="center" width="400">
+<img src = "09_condensation_tracker/code_exercise/images/02videonum300.png" class="center" width="400">
 
 - In each iteration, there are few main steps: 
     - Draw N samples from the set with probability distribution; (also serve as resampling!!)
