@@ -78,3 +78,30 @@ In this lab we implemented a shape context descriptor as a feature, and use the 
 - Shape context descriptor: for each point, we define a log-polar coordinate system with this point as origin, and then count number of points inside each bin. Therefore we can have a distribution of points relative to each points.
 - Cost matrix: the dimension of the matrix NxN, where N is the number of points in the set of descriptor. For each set of descriptor, it has dimension NxK, where K is the number of bins for each point.
 - Hungarian algorithm is used to solve this combinatorial problem that assign each one from the first set to a unique one from the second set. (like a bipartite problem)
+
+## 9. Condensation Tracker
+In this lab we implement a Condensation tracker, which is a recursive Bayesian filter.
+
+<img src = "09_condensation_tracker/Lab Assignment 9/code_exercise/images/02videonum300.png" class="center" width="400">
+
+- In each iteration, there are few main steps: 
+    - Draw N samples from the set with probability distribution; (also serve as resampling!!)
+    - Propagate those samples with the model and random noise;
+    - Based on the propagated sample, use a bounding box to compute the pixel-based features (histograms), and compute the chi-square distance and update weights for those samples
+    - Estimate the mean posterior state.
+- Motion model helps occlusion situation
+- System noise helps scatter apart the sampled particles and increases the chances of successful tracking.
+- Measurement noise decides the shape of the weight distribution, if it is too big, then the distribution is too even and therefore the important particles cannot be recognized.
+- Number of bins (for feature computation);
+- Update the appearance model or not: if the initial bounding box is not good, we might need to update the model, but updating appearance target might lead to lose track of the actual task --> (in that case should stick to the initial one)
+
+## 10. Image Categorization
+In this lab we implemented bag-of-words approach to realize simple image categorization. Images are represented by histograms over visual words,
+
+<img src = "10_image_categorization/code_exercise/images/196patch.png" class="center" width="400">
+
+- Grid points in the image are of interest, for each grid point (feature), we use HoG as a descriptor. (See note for HoG definition);
+- Construct the codebook using features from car dataset and non-car dataset, and use kmeans to cluster into k visual words.
+- In the testing phase, for each test image, we extract all features and form a histogram distribution, and look into the codebook of car and non-car, if this histogram is more close to the codebook of car, then it is classified as car.
+    - simple nearest neighbor classification
+    - Bayesian classification: for each visual word, we assume a normal distribution with mean and standard deviation computed from the bags of words. (detail see report)
